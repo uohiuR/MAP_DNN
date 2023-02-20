@@ -1,6 +1,6 @@
 # MAP_
 
-Pytorch implementation of of manuscript entitled "A Machine-learning-based Data Analysis Method for Cell-based Selection of DNA-encoded libraries (DELs)"
+Pytorch implementation of the manuscript entitled "A Machine-learning-based Data Analysis Method for Cell-based Selection of DNA-encoded libraries (DELs)"
 
 ## Dependencies
 - Python (3.9)
