@@ -13,7 +13,7 @@ from torch.utils.data import DataLoader, Dataset
 torch.manual_seed(0)
 from sklearn.model_selection import train_test_split
 
-def train_and_test(model,n_epochs,train_data_loader, valid_data_loader,ratio,loss_fn,learning_rate=0.001):
+def train_and_valid(model,n_epochs,train_data_loader, valid_data_loader,ratio,loss_fn,learning_rate=0.001):
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     optimizer = optim.AdamW(model.parameters(), lr=learning_rate, )
@@ -49,7 +49,7 @@ def train_and_test(model,n_epochs,train_data_loader, valid_data_loader,ratio,los
         print(f"epoch={epoch};train_loss={training_loss.detach().item()};valid_loss={valid_loss.item()}")
     return model
 
-def test_loss(model,test_data_loader,loss_fn):
+def test_loss(model,test_data_loader,loss_fn,ratio):
     test_loss = 0
     model.eval()
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
