@@ -1,6 +1,6 @@
 # MAP_DNN for Cell-based Selection of DNA-encoded libraries
 
-Pytorch implementation of the manuscript entitled "A Machine-learning-based Data Analysis Method for Cell-based Selection of DNA-encoded libraries (DELs)"
+An example Pytorch implementation of the manuscript entitled "A Machine-learning-based Data Analysis Method for Cell-based Selection of DNA-encoded libraries (DELs)"
 
 ## Dependencies
 - Python (3.9)
