@@ -1,4 +1,7 @@
 # MAP_
+
+Pytorch implementation of of manuscript entitled "A Machine-learning-based Data Analysis Method for Cell-based Selection of DNA-encoded libraries (DELs)"
+
 ## Dependencies
 - Python (3.9)
 - Numpy (1.22.1)
