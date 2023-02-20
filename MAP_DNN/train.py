@@ -37,7 +37,7 @@ def train_and_test(model,n_epochs,train_data_loader, valid_data_loader,test_data
         training_loss /= len(train_data_loader.dataset)
         model.eval()
         for batch in valid_data_loader:
-            device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+            
             with torch.no_grad():
                 input, post, pre = batch
                 input, post, pre = input.to(device), post.to(device), pre.to(device)
@@ -49,3 +49,18 @@ def train_and_test(model,n_epochs,train_data_loader, valid_data_loader,test_data
         print(f"epoch={epoch};train_loss={training_loss.detach().item()};valid_loss={valid_loss.item()}")
     return model
 
+def test_loss(model,test_data_loader,loss_fn):
+    test_loss = 0
+    model.eval()
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    model.to(device)
+    for batch in test_data_loader:
+        input, post, pre = batch
+        input, post, pre = input.to(device), post.to(device), pre.to(device)
+        output = model(input)
+        loss1 = loss_fn(output, post, pre,ratio)
+        torch_sum = torch.sum(loss1, dim=0)
+        test_loss += torch_sum.detach()
+    test_loss /= len(test_data_loader.dataset)
+    print(f"test_loss={test_loss.item()}")
+    return model
