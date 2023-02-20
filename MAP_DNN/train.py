@@ -59,5 +59,5 @@ def train_and_test(model,n_epochs,train_data_loader, valid_data_loader,test_data
         torch_sum = torch.sum(loss1, dim=0)
         test_loss += torch_sum.detach()
     test_loss /= len(test_data_loader.dataset)
-    print(test_loss.item())
+    print(f"test_loss={test_loss.item()}")
     return model
