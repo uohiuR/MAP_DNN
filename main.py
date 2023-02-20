@@ -1,5 +1,5 @@
 from MAP_DNN.losses import loss_fn
-from MAP_DNN.train import train_and_test
+from MAP_DNN.train import train_and_valid
 from MAP_DNN.model import *
 from MAP_DNN.dataloader import load_data
 
@@ -16,7 +16,7 @@ model=Net()
 init_weights(model)
 
 train_data_loader,valid_data_loader,test_data_loader=load_data(file,target_str,pre_str)
-model=train_and_test(model,n_epochs,train_data_loader,valid_data_loader,ratio,loss_fn,0.001)
+model=train_and_valid(model,n_epochs,train_data_loader,valid_data_loader,ratio,loss_fn,0.001)
 
 path="example.pt"
 torch.save(model.state_dict(),path)
