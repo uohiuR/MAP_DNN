@@ -13,7 +13,7 @@ from torch.utils.data import DataLoader, Dataset
 torch.manual_seed(0)
 from sklearn.model_selection import train_test_split
 
-def train_and_test(model,n_epochs,train_data_loader, valid_data_loader,test_data_loader,ratio,loss_fn,learning_rate=0.001):
+def train_and_test(model,n_epochs,train_data_loader, valid_data_loader,test_data_loader,ratio,loss_fn,learning_rate=0.001,test=False):
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     optimizer = optim.AdamW(model.parameters(), lr=learning_rate, )
@@ -47,17 +47,5 @@ def train_and_test(model,n_epochs,train_data_loader, valid_data_loader,test_data
                 valid_loss += torch_sum
         valid_loss /= len(valid_data_loader.dataset)
         print(f"epoch={epoch};train_loss={training_loss.detach().item()};valid_loss={valid_loss.item()}")
-
-    test_loss = 0
-    model.eval()
-    model.to(device)
-    for batch in test_data_loader:
-        input, post, pre = batch
-        input, post, pre = input.to(device), post.to(device), pre.to(device)
-        output = model(input)
-        loss1 = loss_fn(output, post, pre,ratio)
-        torch_sum = torch.sum(loss1, dim=0)
-        test_loss += torch_sum.detach()
-    test_loss /= len(test_data_loader.dataset)
-    print(f"test_loss={test_loss.item()}")
     return model
+
