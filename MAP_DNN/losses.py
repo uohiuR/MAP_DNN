@@ -1,6 +1,6 @@
 import torch
 
-def loss_fn(out, post, pre):
+def loss_fn(out, post, pre,ratio, L1_rate=1):
     R = out / ratio
     z = 2 * (torch.sqrt(post + 3 / 8) - torch.sqrt((pre + 3 / 8) * R))
     z = z / torch.sqrt(1 + R)
