@@ -16,7 +16,7 @@ model=Net()
 init_weights(model)
 
 train_data_loader,valid_data_loader,test_data_loader=load_data(file,target_str,pre_str)
-model=train_and_test(model,n_epochs,train_data_loader,valid_data_loader,test_data_loader,ratio,0.001)
+model=train_and_test(model,n_epochs,train_data_loader,valid_data_loader,test_data_loader,ratio,loss_fn,0.001)
 
 path="example.pt"
 torch.save(model.state_dict(),path)
