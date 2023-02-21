@@ -8,6 +8,8 @@ print(file.head())
 target_str = "Post"
 pre_str = "Pre"
 ratio = np.sum(file[pre_str]) / np.sum(file[target_str])
+
+#hyperparameters
 L1_rate = 1
 n_epochs = 100
 learning_rate = 0.001
