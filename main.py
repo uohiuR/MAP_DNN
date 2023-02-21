@@ -3,7 +3,7 @@ from MAP_DNN.train import train_and_valid
 from MAP_DNN.model import *
 from MAP_DNN.dataloader import load_data
 
-file = pd.read_csv("raw_data/example.csv")
+file = pd.read_csv("example/example.csv")
 print(file.head())
 target_str = "Post"
 pre_str = "Pre"
